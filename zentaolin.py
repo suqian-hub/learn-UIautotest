@@ -8,7 +8,7 @@ from selenium.webdriver.support.select import Select
 driver = 'C:\chromedriver_win32\chromedriver.exe'
 browser = webdriver.Chrome(executable_path = driver)
 '''
-Zentao-v9.4-64bit
+Zentao-v12.0.1-64bit
 '''
 #打开网页
 browser.get("http://127.0.0.1/zentao/user-login-L3plbnRhby8=.html")
@@ -21,10 +21,11 @@ browser.find_element_by_xpath('//*[@id="loginPanel"]/div/div[2]/form/table/tbody
 #登录
 browser.find_element_by_xpath('//*[@id="submit"]').click()
 #定位标题
-tilte = browser.find_element_by_xpath('//*[@id="companyname"]')
-# time.sleep(5)
+browser.refresh()
+tilte = browser.find_element_by_css_selector("body.m-my-index:nth-child(2) div:nth-child(1) div.container hgroup:nth-child(1) h1:nth-child(1) > a:nth-child(1)")
+time.sleep(5)
 # 断言
-if "Dotest" in tilte.text:
+if "dotest" in tilte.text:
     print("登录成功")
 else:
     print("登录失败")
