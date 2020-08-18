@@ -32,13 +32,14 @@ else:
 time.sleep(2)
 
 #测试模块
-browser.find_element_by_xpath("//*[@id='mainmenu']/ul/li[4]/a").click()
+browser.find_element_by_xpath("//nav[@id='navbar']//li[4]//a[1]").click()
 time.sleep(2)
 #Bug
-browser.find_element_by_link_text("Bug").click()
+browser.find_element_by_xpath("//ul[@class='nav nav-default']//a[contains(text(),'Bug')]").click()
 #点击提交bug
-browser.find_element_by_xpath("//*[@id='createActionMenu']/a").click()
-time.sleep(5)
+browser.refresh()
+browser.find_element_by_xpath("//a[@class='btn btn-primary']").click()
+time.sleep(3)
 
 '''
 select标签定位
