@@ -42,7 +42,7 @@ browser.find_element_by_xpath("//a[@class='btn btn-primary']").click()
 time.sleep(3)
 
 '''
-select标签定位
+select标签定位(旧版禅道v9.4）
 使用index
 若是操作隐藏的元素的话：style="display: none;"；【若不是隐藏的的话不需要js】
 js = 'document.querySelectorAll("select")[0].style.display="block";'
@@ -52,14 +52,24 @@ document.querySelectorAll("select")  选择所有的select。
 [0] 指定这一组标签里的第几个。
 style.display="block";  修改样式的display="block" ,表示可见。
 执行完这句js代码后，就可以正常操作下拉框了。
-'''
-#index定位;导入：from selenium.webdriver.support.select import Select
-#所属模块
+
+index定位;导入：from selenium.webdriver.support.select import Select
+
+选择所属模块
 js = 'document.querySelectorAll("select")[1].style.display="block";'#[1]:从零开始查第几个就写几
 browser.execute_script(js)
 
 module =browser.find_element_by_xpath("//*[@id='module']")
 Select(module).select_by_index(1) #选择下拉字典项的操作
+'''
+#所属模块（新版使用li隐藏标签）
+browser.find_element_by_xpath("//div[@id='module_chosen']//a[@class='chosen-single']").click()
+time.sleep(2)
+ele1 = browser.find_element_by_xpath("//div[@class='chosen-drop chosen-auto-max-width chosen-no-wrap in']")
+ActionChains(browser).move_to_element(ele1).perform()
+ele2 = browser.find_element_by_xpath("//div[@id='moduleIdBox']//li[2]")
+ActionChains(browser).move_to_element(ele2).perform()
+ele2.click()
 
 #所属项目
 time.sleep(5)
