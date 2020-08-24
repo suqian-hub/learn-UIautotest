@@ -12,7 +12,7 @@ Zentao-v12.0.1-64bit
 '''
 #打开网页
 browser.get("http://127.0.0.1/zentao/user-login-L3plbnRhby8=.html")
-time.sleep(5)
+time.sleep(2)
 #用户名
 browser.find_element_by_xpath("//*[@id='account']").send_keys("admin")
 #密码
@@ -23,23 +23,23 @@ browser.find_element_by_xpath('//*[@id="submit"]').click()
 #定位标题
 browser.refresh()
 tilte = browser.find_element_by_css_selector("body.m-my-index:nth-child(2) div:nth-child(1) div.container hgroup:nth-child(1) h1:nth-child(1) > a:nth-child(1)")
-time.sleep(5)
+time.sleep(1)
 # 断言
 if "dotest" in tilte.text:
     print("登录成功")
 else:
     print("登录失败")
-time.sleep(2)
+time.sleep(1)
 
 #测试模块
 browser.find_element_by_xpath("//nav[@id='navbar']//li[4]//a[1]").click()
-time.sleep(2)
+time.sleep(1)
 #Bug
 browser.find_element_by_xpath("//ul[@class='nav nav-default']//a[contains(text(),'Bug')]").click()
 #点击提交bug
-browser.refresh()
+#browser.refresh()
 browser.find_element_by_xpath("//a[@class='btn btn-primary']").click()
-time.sleep(3)
+time.sleep(1)
 
 '''
 select标签定位(旧版禅道v9.4）
@@ -64,20 +64,19 @@ Select(module).select_by_index(1) #选择下拉字典项的操作
 '''
 #所属模块（新版使用li隐藏标签）
 browser.find_element_by_xpath("//div[@id='module_chosen']//a[@class='chosen-single']").click()
-time.sleep(2)
+time.sleep(1)
 ele1 = browser.find_element_by_xpath("//div[@class='chosen-drop chosen-auto-max-width chosen-no-wrap in']")
-ActionChains(browser).move_to_element(ele1).perform()
+#ActionChains(browser).move_to_element(ele1).perform()
 ele2 = browser.find_element_by_xpath("//div[@id='moduleIdBox']//li[2]")
-ActionChains(browser).move_to_element(ele2).perform()
+ActionChains(browser).move_to_element(ele1).move_to_element(ele2).perform()
 ele2.click()
 
 #所属项目
-time.sleep(5)
-js = 'document.querySelectorAll("select")[2].style.display="block";'
-browser.execute_script(js)
-
-project = browser.find_element_by_xpath("//*[@id='project']")
-Select(project).select_by_index(1)      #从零查第几个option
+browser.find_element_by_xpath("//div[@id='project_chosen']").click()
+time.sleep(1)
+ele3 = browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[2]/td[1]/span[1]/div[1]/div[1]/ul[1]/li[1]") 
+ActionChains(browser).move_to_element(ele3).perform()
+ele3.click()
 
 #影响版本
 time.sleep(5)
