@@ -5,6 +5,7 @@ from selenium.webdriver.support.select import Select
 #from pywin32 import win32gui
 #from pywin32 import win32con
 
+# chrome V84.0.4147.135 64bit
 driver = 'C:\chromedriver_win32\chromedriver.exe'
 browser = webdriver.Chrome(executable_path = driver)
 '''
@@ -79,22 +80,22 @@ ActionChains(browser).move_to_element(ele3).perform()
 ele3.click()
 
 #影响版本
-time.sleep(5)
-js = 'document.querySelectorAll("select")[3].style.display="block";'
-browser.execute_script(js)
-#
-project = browser.find_element_by_xpath("//*[@id='openedBuild']")
-
-Select(project).select_by_index(1)
+browser.find_element_by_xpath("//div[@id='openedBuild_chosen']").click()
+time.sleep(1)
+ele4 = browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[2]/td[2]/div[1]/div[1]/div[1]")
+ele5 = browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[2]/td[2]/div[1]/div[1]/div[1]/ul[1]/li[3]")
+ActionChains(browser).move_to_element(ele4).move_to_element(ele5).perform()
+ele5.click()
+time.sleep(1)
 
 #当前指派
-time.sleep(5)
-js = 'document.querySelectorAll("select")[4].style.display="block";'
-browser.execute_script(js)
-
-project = browser.find_element_by_xpath("//*[@id='assignedTo']")
-Select(project).select_by_index(1)
-
+browser.find_element_by_xpath("//div[@id='assignedTo_chosen']").click()
+time.sleep(1)
+ele6 = browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[3]/td[1]/div[1]/div[1]/div[1]/ul[1]")
+ele7 = browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[3]/td[1]/div[1]/div[1]/div[1]/ul[1]/li[3]")
+ActionChains(browser).move_to_element(ele6).move_to_element(ele7).perform()
+ele7.click()
+time.sleep(1)
 
 #Bug标题
 time.sleep(5)
