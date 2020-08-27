@@ -98,21 +98,26 @@ ele7.click()
 time.sleep(1)
 
 #Bug标题
-time.sleep(5)
-browser.find_element_by_id(id_="title").send_keys("安卓-首页：logo显示不正确")
+browser.find_element_by_xpath("//div[@class='input-control has-icon-right required']//input[@id='title']").send_keys("UI自动化测试，提交bug！")
 
 #严重程度:1
-time.sleep(5)
-browser.find_element_by_xpath("//*[@id='dataform']/table/tbody/tr[5]/td/div/div[2]/div/div[1]/button").click()   #点击严重程度按钮
+browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[5]/td[1]/div[1]/div[2]/button[1]").click()
+time.sleep(1)
+ele8 = browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[5]/td[1]/div[1]/div[2]/div[1]/div[1]")
+ele9 = browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[5]/td[1]/div[1]/div[2]/div[1]/div[1]/span[1]")
+ActionChains(browser).move_to_element(ele8).move_to_element(ele9).perform()
+ele9.click()
+time.sleep(1)
 
-time.sleep(5)
-browser.find_element_by_xpath("//*[@id='dataform']/table/tbody/tr[5]/td/div/div[2]/div/div[1]/ul/li[1]/a/span").click()  #选择级别
+#优先级:1
+browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[5]/td[1]/div[1]/div[3]/button[1]").click()
+time.sleep(1)
+ele10 = browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[5]/td[1]/div[1]/div[3]/div[1]/div[1]")
+ele11 = browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[5]/td[1]/div[1]/div[3]/div[1]/div[1]/span[1]")
+ActionChains(browser).move_to_element(ele10).move_to_element(ele11).perform()
+ele11.click()
+time.sleep(1)
 
-#优先级:2
-time.sleep(5)
-browser.find_element_by_xpath('//*[@id="dataform"]/table/tbody/tr[5]/td/div/div[2]/div/div[2]/button').click()
-time.sleep(5)
-browser.find_element_by_xpath('//*[@id="dataform"]/table/tbody/tr[5]/td/div/div[2]/div/div[2]/ul/li[3]/a/span').click()
 
 '''
 重新步骤
