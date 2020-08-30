@@ -2,9 +2,6 @@ from selenium import webdriver
 import time
 from selenium.webdriver.support.select import Select
 
-#from pywin32 import win32gui
-#from pywin32 import win32con
-
 # chrome V84.0.4147.135 64bit
 driver = 'C:\chromedriver_win32\chromedriver.exe'
 browser = webdriver.Chrome(executable_path = driver)
@@ -41,27 +38,7 @@ browser.find_element_by_xpath("//ul[@class='nav nav-default']//a[contains(text()
 browser.find_element_by_xpath("//a[@class='btn btn-primary']").click()
 time.sleep(0.5)
 
-'''
-select标签定位(旧版禅道v9.4）
-使用index
-若是操作隐藏的元素的话：style="display: none;"；【若不是隐藏的的话不需要js】
-js = 'document.querySelectorAll("select")[0].style.display="block";'
-driver.execute_script(js)
-------
-document.querySelectorAll("select")  选择所有的select。
-[0] 指定这一组标签里的第几个。
-style.display="block";  修改样式的display="block" ,表示可见。
-执行完这句js代码后，就可以正常操作下拉框了。
 
-index定位;导入：from selenium.webdriver.support.select import Select
-
-选择所属模块
-js = 'document.querySelectorAll("select")[1].style.display="block";'#[1]:从零开始查第几个就写几
-browser.execute_script(js)
-
-module =browser.find_element_by_xpath("//*[@id='module']")
-Select(module).select_by_index(1) #选择下拉字典项的操作
-'''
 #所属模块（新版使用li隐藏标签）
 browser.find_element_by_xpath("//div[@id='module_chosen']//a[@class='chosen-single']").click()
 time.sleep(0.5)
@@ -118,19 +95,6 @@ ele11.click()
 time.sleep(0.5)
 
 
-'''
-重新步骤
-因为标签含有iframe；所以需要用其他的方法进行
-多层框架或窗口
-frame标签：frame标签有frameset、frame、iframe三种；frame、iframe需要切换，否则无法定位到；
-1.iFrame有ID 或者 name的情况
-driver.switch_to.frame("id或者name")
-2:没有id or name需要用xpath定位
-3.跳出iFrame
-//跳出frame,进入default content;
-dr.switchTo().defaultContent();
-'''
-
 #重现步骤
 frameid = browser.find_element_by_xpath("//iframe[@class='ke-edit-iframe']")
 browser.switch_to.frame(frameid)
@@ -142,42 +106,6 @@ time.sleep(0.5)
 #点击保存功能
 browser.find_element_by_xpath("//button[@id='submit']").click()  
 
-#browser.quit() #退出浏览器
+#退出浏览器
+browser.quit() 
 
-
-'''
-元素类型为：hidden
-调用js实现浏览器上下滑动及左右滑动
-driver.execute_script('window.scrollTo(0,2500);')
-纵向滑动：0,2500；0：顶部；2500：底部（2500-3000）
-
-driver.execute_script('window.scrollTo(2500,0);')
-横向滑动：2500,0；0：左；2500：右（2500-3000）
-browser.execute_script('window.scrollTo(0,2500);')   #滑动到底部
-time.sleep(5)
-'''
-#上传附件：input类型
-
-需要安装：pip install pypiwin32 完成后重启pycharm
-导入：
-import win32gui
-import win32con
-'''
-#driver.find_element_by_xpath('//*[@id="fileBox1"]/tbody/tr/td[1]/div/input').click()    #定位到上传功能
-# win32gui
-#time.sleep(5)
-#dialog = win32gui.FindWindow('#32770', u'打开')  # 打开对话框
-#ComboBoxEx32 = win32gui.FindWindowEx(dialog, 0, 'ComboBoxEx32', None)
-#ComboBox = win32gui.FindWindowEx(ComboBoxEx32, 0, 'ComboBox', None)
-#Edit = win32gui.FindWindowEx(ComboBox, 0, 'Edit', None)  # 上面三句依次寻找对象，直到找到输入框Edit对象的句柄
-#button = win32gui.FindWindowEx(dialog, 0, 'Button', None)  # 确定按钮Button
-#time.sleep(5)
-#win32gui.SendMessage(Edit, win32con.WM_SETTEXT, None, 'd:\\1.png')  # 往输入框输入绝对地址
-#time.sleep(5)
-#win32gui.SendMessage(dialog, win32con.WM_COMMAND, 1, button)  # 按button
-#time.sleep(5)
-
-#点击保存功能;拉动滚动条
-browser.find_element_by_xpath("//*[@id='submit']").click()   #在点击底部的功能
-
-browser.quit() #退出浏览器
