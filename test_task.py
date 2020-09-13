@@ -31,3 +31,17 @@ class Test_Task_TestCase(unittest.TestCase):
         #print(title)
         self.assertEqual(title, "我的地盘 - 禅道")
         print("登陆成功")
+        
+        #进入提交测试页面
+        self.browser.find_element_by_xpath("//nav[@id='navbar']//li[4]//a[1]").click()
+        self.browser.find_element_by_xpath("//div[@id='subHeader']//li[3]//a[1]").click()
+        self.browser.find_element_by_xpath("//a[@class='btn btn-info']").click()
+
+
+
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+
