@@ -37,6 +37,13 @@ class Test_Task_TestCase(unittest.TestCase):
         self.browser.find_element_by_xpath("//div[@id='subHeader']//li[3]//a[1]").click()
         self.browser.find_element_by_xpath("//a[@class='btn btn-info']").click()
 
+        time.sleep(0.5)
+        self.browser.get_screenshot_as_file("./test_task.png")
+        title = self.browser.title
+        #print(title)
+        self.assertEqual(title, "见山会诊-小程序-提交测试 - 禅道")
+
+        #所属模块
 
 
 
