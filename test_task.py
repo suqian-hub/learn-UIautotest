@@ -25,7 +25,7 @@ class Test_Task_TestCase(unittest.TestCase):
         self.browser.find_element_by_xpath("//input[@name='password']").send_keys("Aa123456")
         self.browser.find_element_by_xpath('//*[@id="submit"]').click()
 
-        time.sleep(0.2)
+        time.sleep(0.5)
         #self.browser.refresh()
         title = self.browser.title
         #print(title)
@@ -50,7 +50,7 @@ class Test_Task_TestCase(unittest.TestCase):
 
         #负责人
         self.browser.find_element_by_xpath("//div[@id='owner_chosen']//a[@class='chosen-single chosen-default']").click()
-        time.sleep(1)        
+        time.sleep(0.5)        
         #ele2 = self.browser.find_element_by_xpath("//div[@class='chosen-drop chosen-auto-max-width chosen-no-wrap in']//ul[@class='chosen-results']")  
         ele3 = self.browser.find_element_by_xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/form[1]/table[1]/tbody[1]/tr[4]/td[1]/div[1]/div[1]/div[1]/ul[1]/li[1]") 
         ActionChains(self.browser).move_to_element(ele3).click(ele3).perform()
