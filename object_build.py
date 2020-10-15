@@ -18,9 +18,9 @@ class Object_Build_TestCase(unittest.TestCase):
 
     def test_case1(self):
         self.browser.get("http://127.0.0.1/zentao/user-login-L3plbnRhby8=.html")
-        time.sleep(1)
+        time.sleep(0.5)
         
-        self.browser.find_element_by_xpath("//*[@id='account']").send_keys("admin")
+        self.browser.find_element_by_xpath("//*[@id='account']").send_keys("chanpin")
         self.browser.find_element_by_xpath("//input[@name='password']").send_keys("Aa123456")
         self.browser.find_element_by_xpath('//*[@id="submit"]').click()
         
@@ -29,3 +29,5 @@ class Object_Build_TestCase(unittest.TestCase):
         #print(title)
         self.assertEqual(title, "我的地盘 - 禅道")
         print("登陆成功")
+        
+        #进入提交需求页面
